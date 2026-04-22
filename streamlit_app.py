@@ -7,10 +7,18 @@ from chatbot.agent import chatbot
 from utils.geocode import get_lat_lon
 from utils.pdf import generate_pdf
 from db.database import save_chat, get_chat_history
+from dotenv import load_dotenv
+import os
 
 # ---------------- INIT ----------------
 init_db()
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY")
+db_url = os.getenv("DATABASE_URL")
+
 st.set_page_config(page_title="AI Kundali App", layout="wide")
+
 
 # ---------------- SESSION STATE ----------------
 if "user" not in st.session_state:

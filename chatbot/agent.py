@@ -3,8 +3,11 @@ from langchain.memory import ConversationBufferMemory
 from langgraph.graph import StateGraph
 from pydantic import BaseModel
 from chatbot.prompt import build_prompt
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-llm = ChatOpenAI(model="gpt-4o-mini")
+llm = ChatOpenAI(model="gpt-4o-mini",api_key=os.getenv("OPENAI_API_KEY"))
 
 memory = ConversationBufferMemory(return_messages=True)
 
